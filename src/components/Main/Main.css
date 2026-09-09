@@ -1,0 +1,205 @@
+/* ========================================
+   CONTEÚDO PRINCIPAL
+   ======================================== */
+
+/*
+  O main utiliza Flexbox em coluna para organizar
+  as diferentes seções verticalmente.
+
+  O gap controla o espaçamento entre as seções,
+  evitando o uso excessivo de margin.
+*/
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  padding: 2rem 1.5rem;
+
+  /*
+    Fundo claro para criar contraste com o header
+    escuro e facilitar a leitura do conteúdo.
+  */
+  background-color: #f8fafc;
+
+  color: #1e293b;
+}
+
+/* ========================================
+   SEÇÕES
+   ======================================== */
+
+/*
+  Cada section utiliza Flexbox em coluna.
+
+  O gap organiza títulos e conteúdos internos
+  de maneira consistente.
+*/
+main section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ========================================
+   TÍTULOS
+   ======================================== */
+
+/*
+  Os títulos h2 possuem uma hierarquia visual
+  clara em relação aos textos.
+
+  clamp() mantém a tipografia responsiva.
+*/
+main h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.2;
+
+  color: #1e3a8a;
+}
+
+/*
+  Os títulos dos cards possuem tamanho menor
+  que os h2 para manter a hierarquia semântica
+  e visual da página.
+*/
+main h3 {
+  font-size: 1.25rem;
+  line-height: 1.3;
+
+  color: #312e81;
+}
+
+/* ========================================
+   TEXTOS
+   ======================================== */
+
+/*
+  max-width em ch limita o comprimento das linhas.
+
+  Isso melhora a legibilidade, pois linhas muito
+  longas podem dificultar a leitura.
+*/
+main p {
+  max-width: 70ch;
+
+  line-height: 1.6;
+
+  color: #475569;
+}
+
+/* ========================================
+   ÁREA DOS CARDS
+   ======================================== */
+
+/*
+  A segunda section contém os artigos.
+
+  CSS Grid é utilizado para criar um layout
+  naturalmente responsivo.
+
+  Em telas pequenas, os elementos ficam em uma
+  única coluna.
+*/
+main section:nth-of-type(2) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/*
+  Os títulos da seção ocupam toda a largura
+  disponível do Grid.
+
+  Isso evita que o h2 seja tratado como um card.
+*/
+main section:nth-of-type(2) > h2 {
+  grid-column: 1 / -1;
+}
+
+/* ========================================
+   CARDS
+   ======================================== */
+
+/*
+  Cada article representa um conteúdo independente.
+
+  Flexbox organiza o título e o texto verticalmente.
+*/
+main article {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  padding: 1.25rem;
+
+  background-color: #ffffff;
+
+  border: 0.0625rem solid #cbd5e1;
+  border-radius: 0.75rem;
+
+  /*
+    Uma sombra leve ajuda a diferenciar os cards
+    do fundo sem criar excesso visual.
+  */
+  box-shadow: 0 0.25rem 0.75rem rgba(15, 23, 42, 0.08);
+
+  /*
+    Transição para melhorar a percepção
+    de interação visual.
+  */
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/*
+  Feedback visual para usuários de mouse.
+
+  O movimento é pequeno para evitar uma animação
+  excessiva ou desconfortável.
+*/
+main article:hover {
+  transform: translateY(-0.25rem);
+
+  box-shadow: 0 0.5rem 1rem rgba(15, 23, 42, 0.12);
+}
+
+/* ========================================
+   RESPONSIVIDADE - TABLET
+   ======================================== */
+
+/*
+  A partir de 600px, o Grid passa a distribuir
+  os cards automaticamente.
+
+  repeat(auto-fit, minmax()) permite que o número
+  de colunas seja calculado conforme o espaço
+  disponível.
+*/
+@media (min-width: 600px) {
+  main {
+    padding: 3rem 8%;
+  }
+
+  main section:nth-of-type(2) {
+    grid-template-columns:
+      repeat(auto-fit, minmax(15rem, 1fr));
+
+    gap: 1.5rem;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE - DESKTOP
+   ======================================== */
+
+/*
+  Em telas maiores, aumentamos levemente o espaço
+  entre as grandes seções da página.
+*/
+@media (min-width: 1024px) {
+  main {
+    gap: 4rem;
+  }
+}

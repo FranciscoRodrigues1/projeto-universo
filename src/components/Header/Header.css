@@ -1,0 +1,174 @@
+/* ========================================
+   HEADER
+   ======================================== */
+
+/*
+  O header utiliza Flexbox em coluna para
+  organizar título, descrição e navegação.
+
+  O gap cria espaçamento entre os elementos
+  sem a necessidade de utilizar muitas margins.
+*/
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  /*
+    Espaçamento interno moderado para evitar
+    excesso de padding.
+  */
+  padding: 2rem 1.5rem;
+
+  /*
+    Fundo escuro inspirado no espaço.
+    A cor clara dos textos cria um bom contraste.
+  */
+  background-color: #0b1026;
+  color: #f8fafc;
+}
+
+/* ========================================
+   TÍTULO PRINCIPAL
+   ======================================== */
+
+/*
+  clamp() permite que o tamanho da fonte
+  se adapte automaticamente a diferentes telas.
+
+  - 2rem: tamanho mínimo
+  - 5vw: tamanho fluido
+  - 3.5rem: tamanho máximo
+*/
+header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.2;
+}
+
+/*
+  O parágrafo possui uma cor levemente diferente
+  para criar hierarquia visual sem prejudicar
+  o contraste e a leitura.
+*/
+header p {
+  max-width: 60ch;
+
+  font-size: 1.1rem;
+  line-height: 1.6;
+
+  color: #cbd5e1;
+}
+
+/* ========================================
+   NAVEGAÇÃO
+   ======================================== */
+
+/*
+  O nav ocupa toda a largura disponível.
+*/
+header nav {
+  width: 100%;
+}
+
+/*
+  Flexbox é utilizado para organizar os links.
+
+  flex-wrap permite que os itens quebrem linha
+  em telas menores, evitando estouros horizontais.
+*/
+header nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  /*
+    A lista é apresentada como navegação,
+    por isso removemos os marcadores.
+  */
+  list-style: none;
+}
+
+/* ========================================
+   LINKS DA NAVEGAÇÃO
+   ======================================== */
+
+/*
+  Os links recebem um display flex para facilitar
+  o alinhamento do conteúdo.
+
+  O padding cria uma área de toque confortável
+  para usuários de dispositivos móveis.
+*/
+header nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 2.75rem;
+
+  padding: 0.5rem 1rem;
+
+  color: #ffffff;
+  background-color: #1e3a8a;
+
+  text-decoration: none;
+
+  border-radius: 0.5rem;
+
+  /*
+    A transição torna a interação visual
+    mais suave.
+  */
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/*
+  :hover oferece feedback visual para usuários
+  que utilizam mouse.
+*/
+header nav a:hover {
+  background-color: #2563eb;
+}
+
+/*
+  :focus-visible melhora a acessibilidade para
+  usuários que navegam utilizando teclado.
+
+  O outline fica visível apenas quando necessário,
+  evitando remover indicadores importantes de foco.
+*/
+header nav a:focus-visible {
+  outline: 0.1875rem solid #facc15;
+  outline-offset: 0.25rem;
+}
+
+/*
+  Uma pequena alteração visual durante o clique.
+*/
+header nav a:active {
+  transform: scale(0.98);
+}
+
+/* ========================================
+   RESPONSIVIDADE - TABLET E DESKTOP
+   ======================================== */
+
+/*
+  Em telas maiores, o conteúdo pode ganhar
+  mais espaço horizontal.
+*/
+@media (min-width: 768px) {
+  header {
+    padding: 3rem 8%;
+  }
+
+  /*
+    A navegação permanece flexível, mas os links
+    ganham melhor distribuição visual.
+  */
+  header nav ul {
+    gap: 1rem;
+  }
+}

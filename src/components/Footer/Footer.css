@@ -1,0 +1,78 @@
+/* ========================================
+   FOOTER
+   ======================================== */
+
+/*
+  Flexbox organiza os elementos do rodapé
+  verticalmente.
+
+  align-items: center centraliza o conteúdo
+  horizontalmente.
+*/
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 2rem 1.5rem;
+
+  text-align: center;
+
+  /*
+    Fundo escuro para manter uma identidade visual
+    semelhante ao header e reforçar o tema espacial.
+  */
+  background-color: #0b1026;
+
+  color: #f8fafc;
+}
+
+/* ========================================
+   TÍTULO DO RODAPÉ
+   ======================================== */
+
+/*
+  O tamanho utiliza clamp() para manter uma
+  tipografia adaptável entre diferentes dispositivos.
+*/
+footer h2 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  line-height: 1.3;
+
+  /*
+    Amarelo inspirado em estrelas para criar
+    destaque e contraste com o fundo escuro.
+  */
+  color: #facc15;
+}
+
+/* ========================================
+   TEXTO DO RODAPÉ
+   ======================================== */
+
+/*
+  A largura máxima evita linhas muito extensas
+  em telas grandes.
+*/
+footer p {
+  max-width: 60ch;
+
+  line-height: 1.6;
+
+  color: #cbd5e1;
+}
+
+/* ========================================
+   RESPONSIVIDADE - TABLET E DESKTOP
+   ======================================== */
+
+/*
+  Em telas maiores, aumentamos levemente o
+  espaçamento lateral do rodapé.
+*/
+@media (min-width: 768px) {
+  footer {
+    padding: 2.5rem 8%;
+  }
+}
